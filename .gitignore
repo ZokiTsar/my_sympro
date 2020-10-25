@@ -1,3 +1,7 @@
+.hg
+.hgignore
+.hgtimestamp
+
 
 ###> symfony/framework-bundle ###
 /.env.local

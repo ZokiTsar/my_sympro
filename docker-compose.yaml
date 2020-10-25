@@ -1,0 +1,27 @@
+# docker-compose.yaml
+
+version: '3.8'
+services:
+  php:                                                                # "php" was "language" in previous example
+                            # image: php:7.4
+    build:                                                            # And recreate it as follows
+      context: .
+      dockerfile: docker/build/php/Dockerfile
+    ports:
+      - "8100:80"
+
+  mysql:                                                              # Configure the database
+    image: mysql:5.7
+                                                      
+    environment:                                                      # Add the MYSQL_ROOT_PASSWORD to the environment variables
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+
+# apache:                                                             # Configure Apache              <- THIS NODE AS TO BE ENTIRELY REMOVED
+#                           # image: httpd:2.4
+#                           # build: docker/build/apache
+#   build:                                                            # And recreate it as follows
+#     context: .
+#     dockerfile: docker/build/apache/Dockerfile
+#   ports:
+#     - "8100:80"
+
